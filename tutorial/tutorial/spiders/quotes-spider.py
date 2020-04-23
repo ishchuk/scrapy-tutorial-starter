@@ -1,18 +1,16 @@
 import scrapy
+from tutorial.items import QuoteItem
 
 class QuotesSpider(scrapy.Spider):
     name = 'quotes'
     start_urls = ['http://quotes.toscrape.com']
     def parse(self,response):
         #self.logger.info('hello hello there')
-        quotes = response.css('div.quote')
         for quote in quotes:
-            yield {
-                'text': quote.css('.text::text').get(),
-                'author': quote.css('.author::text').get(),
-                'tags': quote.css('.tag::text').getall(),
-            }
-            author_url = quote.css('.author + a::attr(href)').get()
+            loader = ItemLoader(item=QuoteItem(), selector=quote)
+            loader.add_css('quote_content','.text::text')
+            loader.add_css('tags', '.tag::text')
+            #author_url = quote.css('.author + a::attr(href)').get()
             self.logger.info('get author page url')
             yield response.follow(author_url, callback = self.parse_author)
 
