@@ -38,3 +38,25 @@ class SaveQuotesPipeline(object):
             quote.author = exist_author
         else:
             quote.author = author
+
+        #check wheher this quote has tags on it
+        if 'tags' in item:
+            for tag_name in item['tags']:
+                tag = Tag(name = tag_name)
+                exist_tag = session.query(Tag).filter_by(name = tag.name).first()
+                if exist_tag is not None:
+                    tag = exist_tag
+                quote.tags.append(tag)
+
+        try:
+            session.add(quote)
+            session.commit()
+        
+        except:
+            session.rollback()
+            raise
+            
+        finally:
+            session.close()
+
+        return item
