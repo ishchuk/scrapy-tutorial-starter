@@ -1,6 +1,6 @@
 import scrapy
 from scrapy.loader import ItemLoader
-from tutorial.items import QuoteItem
+from ..items import QuoteItem
 
 class QuotesSpider(scrapy.Spider):
     name = "quotes"

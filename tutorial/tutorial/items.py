@@ -1,4 +1,5 @@
 from scrapy.item import Item, Field
+import datetime
 from scrapy.loader.processors import MapCompose, TakeFirst
 
 def remove_quotes(text):
