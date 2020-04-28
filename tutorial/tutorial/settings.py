@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
 
 # Scrapy settings for tutorial project
 #
@@ -83,5 +84,5 @@ ITEM_PIPELINES = {
 
 # Enable and configure HTTP caching (disabled by default)
 
-
+#CONNECTION_STRING = ‘scrapy_quotes.db’
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
