@@ -2,7 +2,7 @@
 
 from sqlalchemy.orm import sessionmaker
 from scrapy.exceptions import DropItem
-from models import Quote, Author, Tag, db_connect, create_table
+from .models import Quote, Author, Tag, db_connect, create_table
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
