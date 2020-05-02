@@ -1,20 +1,33 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
 
 # Scrapy settings for tutorial project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
 #
-#     https://docs.scrapy.org/en/latest/topics/settings.html
-#     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+#     https://doc.scrapy.org/en/latest/topics/settings.html
+#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
+#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'tutorial'
 
 SPIDER_MODULES = ['tutorial.spiders']
 NEWSPIDER_MODULE = 'tutorial.spiders'
 
+# Database Connection String
+
+# SQLite
+CONNECTION_STRING = 'sqlite:///scrapy_quotes.db'
+
+# MySQL
+# CONNECTION_STRING = "{drivername}://{user}:{passwd}@{host}:{port}/{db_name}?charset=utf8".format(
+#     drivername="mysql",
+#     user="harrywang",
+#     passwd="tutorial",
+#     host="localhost",
+#     port="3306",
+#     db_name="scrapy_quotes",
+# )
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
@@ -26,7 +39,7 @@ ROBOTSTXT_OBEY = True
 #CONCURRENT_REQUESTS = 32
 
 # Configure a delay for requests for the same website (default: 0)
-# See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
+# See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 #DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
@@ -46,32 +59,33 @@ ROBOTSTXT_OBEY = True
 #}
 
 # Enable or disable spider middlewares
-# See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+# See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
 #    'tutorial.middlewares.TutorialSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
-# See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
+# See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
 #    'tutorial.middlewares.TutorialDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
-# See https://docs.scrapy.org/en/latest/topics/extensions.html
+# See https://doc.scrapy.org/en/latest/topics/extensions.html
 #EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
 #}
 
 # Configure item pipelines
-# See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+# See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
+
     'tutorial.pipelines.DuplicatesPipeline': 100,
     'tutorial.pipelines.SaveQuotesPipeline': 200,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
-# See https://docs.scrapy.org/en/latest/topics/autothrottle.html
+# See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
 # The initial download delay
 #AUTOTHROTTLE_START_DELAY = 5
@@ -84,6 +98,9 @@ ITEM_PIPELINES = {
 #AUTOTHROTTLE_DEBUG = False
 
 # Enable and configure HTTP caching (disabled by default)
-
-#CONNECTION_STRING = ‘sqlite:///scrapy_quotes.db’
-# See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
+# See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
+#HTTPCACHE_ENABLED = True
+#HTTPCACHE_EXPIRATION_SECS = 0
+#HTTPCACHE_DIR = 'httpcache'
+#HTTPCACHE_IGNORE_HTTP_CODES = []
+#HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
