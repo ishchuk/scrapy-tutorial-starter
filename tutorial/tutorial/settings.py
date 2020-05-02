@@ -84,5 +84,5 @@ ITEM_PIPELINES = {
 
 # Enable and configure HTTP caching (disabled by default)
 
-CONNECTION_STRING = ‘sqlite:///scrapy_quotes.db’
+#CONNECTION_STRING = ‘sqlite:///scrapy_quotes.db’
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
